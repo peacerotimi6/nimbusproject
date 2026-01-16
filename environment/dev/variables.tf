@@ -1,14 +1,14 @@
 variable "name" {
-  description = "Name of the AKS cluster"
+  description = "Globally unique name of the Azure Container Registry"
   type        = string
 
 }
-
 variable "location" {
   description = "Azure Region"
   type        = string
 
 }
+
 variable "resource_group_name" {
   description = "Name of the Resource group"
   type        = string
@@ -17,13 +17,11 @@ variable "resource_group_name" {
 variable "node_count" {
   description = "Number of Nodes in the default node pool"
   type        = number
-  default     = 1
-
 }
 variable "vm_size" {
   description = "VM size for the default node pool"
   type        = string
-  default     = "standard_B2s"
+  default     = "standard_DS2_v2"
 
 }
 variable "environment" {
@@ -36,6 +34,13 @@ variable "owner" {
   type        = string
 
 }
-variable "acr_id" {
-  type = string
+variable "acr_name" {
+  description = "Name of the ACR"
+  type        = string
+
+}
+variable "aks_name" {
+  description = "Name of the AKS"
+  type        = string
+
 }
