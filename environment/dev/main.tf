@@ -1,20 +1,23 @@
-terraform {
+﻿terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.100"
+      version = "~> 4.0"
     }
   }
 }
 
 # Configure the Microsoft Azure Provider
+# Subscription ID must be set via ARM_SUBSCRIPTION_ID environment variable
+# or explicitly in the provider block (not recommended for security)
+# 
+# To set environment variable:
+#   PowerShell: $env:ARM_SUBSCRIPTION_ID = "your-subscription-id"
+#   Bash: export ARM_SUBSCRIPTION_ID="your-subscription-id"
+#   Or use: .\setup-env.ps1 (from project root)
 provider "azurerm" {
-  #resource_provider_registrations = "none" # This is only required when the User, Service Principal, or Identity running Terraform lacks the permissions to register Azure Resource Providers.
   features {}
-  skip_provider_registration = false
 }
-
-
 
 module "resource_group" {
   source   = "../../Modules/resource-group"
@@ -45,8 +48,4 @@ module "AKS" {
   environment         = var.environment
   owner               = var.owner
   acr_id              = module.ACR.acr_id
-
-
 }
-
-
