@@ -7,3 +7,10 @@ node_modules/
 .cache/
 **/.cache/
 
+# Environment variables and sensitive config
+.env
+.env.local
+*.tfvars.local
+**/.env
+**/.env.local
+
