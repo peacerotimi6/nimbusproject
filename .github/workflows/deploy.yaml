@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      
+
 permissions:
   contents: read
   security-events: write
@@ -75,11 +75,11 @@ jobs:
           format: sarif
           output: trivy-results.sarif
 
-      - name: Upload Trivy results to GitHub Security
-        uses: github/codeql-action/upload-sarif@v3
-        if: always()
-        with:
-          sarif_file: trivy-results.sarif
+    #   - name: Upload Trivy results to GitHub Security
+    #     uses: github/codeql-action/upload-sarif@v3
+    #     if: always()
+    #     with:
+    #       sarif_file: trivy-results.sarif
 
       - name: Push Docker image to ACR
         run: |
