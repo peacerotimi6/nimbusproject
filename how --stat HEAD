@@ -1,0 +1,18 @@
+[33mcommit 62bc274d5b10f41fb0713c35ab49507f809c66e3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/secure-provider-config[m[33m, [m[1;31morigin/feature/secure-provider-config[m[33m)[m
+Author: eazy-sys <omekeifebuche1@gmail.com>
+Date:   Sat Jan 17 11:01:25 2026 +0000
+
+    feat: secure provider configuration using environment variables
+    
+    - Remove hardcoded subscription ID from main.tf
+    - Add .env.example template for secure configuration
+    - Add setup-env.ps1 helper script
+    - Add comprehensive README with security best practices
+    - Update .gitignore to exclude sensitive files
+
+ .env.example              | 17 [32m+++++++++[m
+ .gitignore                |  7 [32m++++[m
+ environment/dev/README.md | 89 [32m+++++++++++++++++++++++++++++++++++++++++++++++[m
+ environment/dev/main.tf   | 19 [32m+++++[m[31m-----[m
+ setup-env.ps1             | 38 [32m++++++++++++++++++++[m
+ 5 files changed, 160 insertions(+), 10 deletions(-)
