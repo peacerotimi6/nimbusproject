@@ -111,8 +111,8 @@ jobs:
 
       - name: Verify deployment
         run: |
-          kubectl rollout status deployment/nimbus-app -n default
-          kubectl get pods -n default
+          kubectl rollout status deployment/my-app -n dev
+          kubectl get pods -n dev
 
   # Job 4: Send Success Notification (runs after successful deployment)
   notify:
