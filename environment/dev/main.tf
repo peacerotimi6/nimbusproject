@@ -48,4 +48,5 @@ module "AKS" {
   environment         = var.environment
   owner               = var.owner
   acr_id              = module.ACR.acr_id
+  vm_size             = var.vm_size
 }

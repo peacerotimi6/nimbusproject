@@ -1,8 +1,4 @@
-variable "name" {
-  description = "Globally unique name of the Azure Container Registry"
-  type        = string
 
-}
 variable "location" {
   description = "Azure Region"
   type        = string
@@ -21,7 +17,7 @@ variable "node_count" {
 variable "vm_size" {
   description = "VM size for the default node pool"
   type        = string
-  default     = "standard_DS2_v2"
+  default     = "Standard_D2ads_v7"
 
 }
 variable "environment" {

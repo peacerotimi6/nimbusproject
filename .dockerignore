@@ -1,26 +1,10 @@
-terraform.tfstate
-.terraform*
-dist/
-build/
-node_modules/
-**/node_modules/
-.cache/
-**/.cache/
-
-# Environment variables and sensitive config
-.env
-.env.local
-*.tfvars.local
-**/.env
-**/.env.local
-
 node_modules
 dist
-.DS_Store
+.git
+*.log
 .env
-.env.example
-.codex/
-.claude/
+.codex
+.claude
 
 # Local .terraform directories
 **/.terraform/*
@@ -43,6 +27,7 @@ override.tf.json
 *.tfvars
 *.tfvars.json
 terraform.tfvars
+terraform/.terraform.lock.hcl
 
 # IDE/editor files
 .vscode/
