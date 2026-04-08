@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: my-app-container
-          image: nimbusacrdev001.azurecr.io/nimbusproject:v1
+          image: nimbusacrdev001.azurecr.io/nimbusproject:v2
           ports:
             - containerPort: 3000
           resources:

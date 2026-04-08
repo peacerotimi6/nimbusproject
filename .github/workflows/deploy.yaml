@@ -57,12 +57,12 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t nimbusacrdev001.azurecr.io/nimbus-app:v1 ./app
+          docker build -t nimbusacrdev001.azurecr.io/nimbusproject:v2 ./app
 
       - name: Run Trivy vulnerability scanner on built image
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: nimbusacrdev001.azurecr.io/nimbus-app:v1
+          image-ref: nimbusacrdev001.azurecr.io/nimbusproject:v2
           format: table
           exit-code: 0  # Fail the build if HIGH or CRITICAL vulnerabilities found
           severity: 'CRITICAL,HIGH'
@@ -145,4 +145,3 @@ jobs:
 
             🔗 SonarCloud Dashboard: https://sonarcloud.io/project/overview?id=${{ secrets.SONAR_PROJECT_KEY }}
             🔗 GitHub Actions: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-#
