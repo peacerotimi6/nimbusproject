@@ -71,7 +71,7 @@ jobs:
       - name: Run Trivy full report (informational)
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: nimbusacrdev001.azurecr.io/nimbus-app:v1
+          image-ref: nimbusacrdev001.azurecr.io/nimbusproject:v2
           format: sarif
           output: trivy-results.sarif
 
@@ -83,7 +83,7 @@ jobs:
 
       - name: Push Docker image to ACR
         run: |
-          docker push nimbusacrdev001.azurecr.io/nimbus-app:v1
+          docker push nimbusacrdev001.azurecr.io/nimbusproject:v2
 
   # Job 3: Deploy to AKS (runs only if all security checks pass)
   deploy:
