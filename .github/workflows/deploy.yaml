@@ -130,8 +130,8 @@ jobs:
           username: ${{ secrets.SMTP_USERNAME }}
           password: ${{ secrets.SMTP_PASSWORD }}
           subject: "✅ NimbusShop Deployment Successful"
-          to: omekeifebuche1@gmail.com
-          from: omekeifebuche1@gmail.com
+          to:  ${{ secrets.EMAIL_ADDRESS }}
+          from: ${{ secrets.EMAIL_ADDRESS }}
           body: |
             ✅ NimbusShop deployment completed successfully!
             
@@ -140,8 +140,9 @@ jobs:
             🔍 Trivy Scan: Passed
             
             Deployment:
-            🚀 Image: nimbusacrdev001.azurecr.io/nimbus-app:v1
+            🚀 Image: nimbusacrdev001.azurecr.io/nimbusproject:v2
             ☸️  Cluster: aks-nimbus-dev
 
             🔗 SonarCloud Dashboard: https://sonarcloud.io/project/overview?id=${{ secrets.SONAR_PROJECT_KEY }}
             🔗 GitHub Actions: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+##END
