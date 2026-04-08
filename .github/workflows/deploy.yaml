@@ -145,3 +145,4 @@ jobs:
 
             🔗 SonarCloud Dashboard: https://sonarcloud.io/project/overview?id=${{ secrets.SONAR_PROJECT_KEY }}
             🔗 GitHub Actions: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+#
