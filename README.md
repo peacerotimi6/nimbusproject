@@ -1,12 +1,8 @@
-# Nimbus E-Commerce Platform 🚀
+🚀 Nimbus E-Commerce Platform
 
-Nimbus is a cloud-native eCommerce platform built with scalability, security, and observability at its core. It leverages Docker, Kubernetes (AKS), and Terraform to deliver a production-ready DevOps pipeline with integrated monitoring and security scanning.
+Nimbus is a cloud-native eCommerce platform designed for scalability, security, and observability. It demonstrates a full DevOps lifecycle using Docker, Kubernetes (AKS), Terraform, and CI/CD automation with GitHub Actions.
 
----
-
-## 🧱 Architecture Overview
-
-```text
+🧱 Architecture Overview
 Frontend (React / Next.js)
         ↓
 Backend API (Node.js)
@@ -16,31 +12,23 @@ Docker Containers
 Azure Kubernetes Service (AKS)
         ↓
 Terraform (Infrastructure as Code)
-```
-
----
-
-## ⚙️ Core Technologies
-
-* Docker – Containerization
-* Kubernetes (AKS) – Orchestration & scaling
-* Terraform – Infrastructure provisioning
-* Azure Container Registry (ACR) – Image storage
-* GitHub Actions – CI/CD pipeline
-* Prometheus – Metrics collection
-* Grafana – Monitoring dashboards
-* SonarCloud – Code quality & security
-* Trivy – Container vulnerability scanning
-
----
-
-## 📁 Project Structure
-
+⚙️ Core Technologies
+🐳 Docker – Containerization
+☸️ Kubernetes (AKS) – Orchestration & scaling
+🏗️ Terraform – Infrastructure provisioning
+☁️ Azure Container Registry (ACR) – Image storage
+🔄 GitHub Actions – CI/CD automation
+📊 Prometheus – Metrics collection
+📈 Grafana – Monitoring dashboards
+🔐 SonarCloud – Code quality & security analysis
+🛡️ Trivy – Container vulnerability scanning
+📁 Project Structure
 nimbus/
-├── app/                      # your backend/frontend code
-├── docker/                   # Dockerfiles
+├── app/                          # Frontend + Backend application
 │
-├── infrastructure/          # Terraform (Azure resources)
+├── docker/                       # Dockerfiles
+│
+├── infrastructure/              # Terraform (Azure resources)
 │   └── environments/
 │       └── dev/
 │           ├── AKS/
@@ -48,7 +36,7 @@ nimbus/
 │           ├── keyvault/
 │           └── resource-group/
 │
-├── k8s/                     # Kubernetes manifests
+├── k8s/                         # Kubernetes manifests
 │   ├── deployments/
 │   ├── services/
 │   ├── ingress/
@@ -56,179 +44,116 @@ nimbus/
 │       ├── prometheus/
 │       └── grafana/
 │
-└── .github/workflows/       # CI/CD pipeline
-
-## 🐳 Docker
-
-### Build Image
-
-```bash
+└── .github/workflows/           # CI/CD pipelines
+🐳 Docker
+🔧 Build Image
 docker build -t nimbus-ecommerce:v1 .
-```
-
-### Run Locally
-
-```bash
+▶️ Run Locally
 docker run -p 3030:3030 nimbus-ecommerce:v1
-```
 
-Access:
+👉 Open:
 
-```
 http://localhost:3030
-```
-
----
-
-## ☸️ Kubernetes (AKS Deployment)
-
-Deploy application:
-
-```bash
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/service.yaml
-```
-
-Verify:
-
-```bash
+☸️ Kubernetes (AKS Deployment)
+🚀 Deploy Application
+kubectl apply -f k8s/deployments/
+kubectl apply -f k8s/services/
+🔍 Verify Deployment
 kubectl get pods -n dev
 kubectl get services -n dev
-```
+📊 Monitoring & Observability
 
----
+Nimbus includes a full observability stack:
 
-## 📊 Monitoring & Observability
-
-Nimbus includes a full monitoring stack:
-
-### Prometheus
-
-* Scrapes metrics from Kubernetes and services
-* Tracks system and application performance
-
-### Grafana
-
-* Visualizes metrics via dashboards
-* Provides insights into system health
-
-Deploy monitoring:
-
-```bash
+📌 Prometheus
+Collects metrics from Kubernetes cluster and services
+Tracks performance, uptime, and resource usage
+📌 Grafana
+Visual dashboards for system monitoring
+Real-time insights into cluster health
+Deploy Monitoring Stack
 kubectl apply -f k8s/monitoring/
-```
-
----
-
-## 🌍 Terraform (Infrastructure)
-
-```bash
-cd infrastructure/terraform
+🌍 Terraform (Infrastructure as Code)
+⚙️ Initialize Terraform
+cd infrastructure/environments/dev
 terraform init
+📦 Plan & Apply
+terraform plan
 terraform apply
-```
+🔄 CI/CD Pipeline (GitHub Actions)
 
----
+Nimbus uses a multi-stage automated pipeline:
 
-## 🔄 CI/CD Pipeline (GitHub Actions)
+1️⃣ Code Quality
+SonarCloud static analysis
+Enforces quality gates before build
+2️⃣ Build & Security Scan
+Docker image build
+Push to Azure Container Registry (ACR)
+Vulnerability scanning with Trivy
+3️⃣ Deployment
+Authenticate with Azure
+Deploy to AKS cluster
+Apply Kubernetes manifests
+Verify rollout status
+4️⃣ Notifications
+Email alerts on successful deployment
+Links to CI/CD and SonarCloud dashboards
+🔁 Deployment Workflow
+Push to main branch
+        ↓
+SonarCloud Code Scan
+        ↓
+Docker Build
+        ↓
+Trivy Security Scan
+        ↓
+Push Image to ACR
+        ↓
+Deploy to AKS
+        ↓
+Verify Deployment
+        ↓
+Send Notification Email
+🚀 Deployment Details
+📦 Container Registry:
+nimbusacrdev001.azurecr.io/nimbusproject:v2
+☸️ Kubernetes Cluster:
+aks-nimbus-dev
+📍 Namespace:
+dev
+🔐 Security Features
+SonarCloud code quality enforcement
+Trivy vulnerability scanning
+GitHub Secrets for secure credentials
+Controlled CI/CD deployment pipeline
+📬 Notifications
 
-Nimbus uses a **multi-stage CI/CD pipeline** for security and deployment to AKS.
+On successful deployment, the system sends:
 
-### 🔐 1. Code Security (SonarCloud)
-
-* Static code analysis
-* Enforces quality gates before build
-
-### 🐳 2. Build & Scan
-
-* Builds Docker image
-* Pushes to Azure Container Registry (ACR)
-* Scans image using Trivy for vulnerabilities
-
-### ☸️ 3. Deploy to AKS
-
-* Authenticates with Azure
-* Deploys Kubernetes manifests
-* Verifies rollout status
-
-### 📧 4. Notification
-
-* Sends email on successful deployment
-
----
-
-## 🔁 Workflow Summary
-
-```text
-Push to main →
-SonarCloud Scan →
-Docker Build →
-Trivy Scan →
-Push to ACR →
-Deploy to AKS →
-Verify Deployment →
-Email Notification ✅
-```
-
----
-
-## 🚀 Deployment Details
-
-* **Container Registry:**
-  `nimbusacrdev001.azurecr.io/nimbusproject:v2`
-
-* **Kubernetes Cluster:**
-  `aks-nimbus-dev`
-
-* **Namespace:**
-  `dev`
-
----
-
-## 🔐 Security Features
-
-* SonarCloud code analysis
-* Trivy vulnerability scanning
-* GitHub Secrets for credentials
-* Controlled deployment pipeline
-
----
-
-## 📬 Notifications
-
-* Email alerts sent after successful deployment
-* Includes links to:
-
-  * SonarCloud dashboard
-  * GitHub Actions run
-
----
-
-## 🚀 Future Improvements
-
-* Helm charts for Kubernetes
-* Horizontal Pod Autoscaler (HPA)
-* Centralized logging (Loki / ELK)
-* Canary / Blue-Green deployments
-* Automated rollback strategies
-
----
-
-## 📄 License
+Deployment status email
+Links to:
+GitHub Actions run
+SonarCloud dashboard
+🚀 Future Improvements
+Helm chart-based deployments
+Horizontal Pod Autoscaling (HPA)
+Centralized logging (Loki / ELK stack)
+Canary / Blue-Green deployments
+Automated rollback strategies
+Multi-environment support (dev / staging / prod)
+📄 License
 
 MIT License
 
----
+💡 Summary
 
-## 💡 Summary
+Nimbus is a production-style DevOps project showcasing:
 
-Nimbus demonstrates:
-
-* End-to-end DevOps pipeline
-* Secure container build and deployment
-* AKS-based Kubernetes orchestration
-* Real-time monitoring with Prometheus & Grafana
-
----
-
-**Nimbus = Secure • Scalable • Observable eCommerce Platform**
+Cloud-native architecture on Azure (AKS)
+Infrastructure as Code with Terraform
+Containerized microservices with Docker
+Full CI/CD automation with GitHub Actions
+Observability using Prometheus & Grafana
+Security-first deployment pipeline
+🏁 Nimbus = Secure • Scalable • Observable • Automated 🚀
